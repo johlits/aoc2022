@@ -35,3 +35,4 @@ C:\Users\johli\source\repos\aoc2022\aoc2022\obj\Debug\net6.0\aoc2022.dll
 C:\Users\johli\source\repos\aoc2022\aoc2022\obj\Debug\net6.0\ref\aoc2022.dll
 C:\Users\johli\source\repos\aoc2022\aoc2022\obj\Debug\net6.0\aoc2022.pdb
 C:\Users\johli\source\repos\aoc2022\aoc2022\obj\Debug\net6.0\aoc2022.genruntimeconfig.cache
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day4\p.in
