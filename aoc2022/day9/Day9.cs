@@ -18,20 +18,18 @@
         }
         return true;
     }
+
     private class Knot
     {
         public int x;
         public int y;
-        public int lx;
-        public int ly;
         public Knot(int x, int y)
         {
             this.x = x;
             this.y = y;
-            lx = x;
-            ly = y;
         }
     }
+
     public static void Run()
     {
         using (StreamReader file = new StreamReader("day9/p.in"))
@@ -59,8 +57,6 @@
                 var steps = int.Parse(words[1]);
                 for (var i = 0; i < steps; i++)
                 {
-                    head.lx = head.x;
-                    head.ly = head.y;
                     if (direction == "U")
                     {
                         head.y--;
@@ -84,9 +80,6 @@
                     {
                         if (!IsConnected(lastKnot.x, lastKnot.y, knot.x, knot.y))
                         {
-                            knot.lx = knot.x;
-                            knot.ly = knot.y;
-
                             var mx = lastKnot.x - knot.x;
                             var my = lastKnot.y - knot.y;
                             if (my < -1) my = -1;
