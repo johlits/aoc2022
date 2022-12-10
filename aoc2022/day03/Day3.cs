@@ -2,7 +2,7 @@
 {
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day3/p.in"))
+        using (StreamReader file = new StreamReader("day03/p.in"))
         {
             var prios = 0;
             var dic = new Dictionary<char, int>();

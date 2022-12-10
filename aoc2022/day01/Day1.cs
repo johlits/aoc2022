@@ -2,7 +2,7 @@
 {
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day1/p.in"))
+        using (StreamReader file = new StreamReader("day01/p.in"))
         {
             string ln;
             var elves = new List<int>();

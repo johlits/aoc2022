@@ -38,7 +38,7 @@
     }
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day7/p.in"))
+        using (StreamReader file = new StreamReader("day07/p.in"))
         {
             var currentFolder = new Folder("");
             var rootFolder = new Folder("/");

@@ -2,7 +2,7 @@
 {
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day5/p.in"))
+        using (StreamReader file = new StreamReader("day05/p.in"))
         {
             string ln;
             var step = 0;

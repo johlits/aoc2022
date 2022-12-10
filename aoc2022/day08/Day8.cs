@@ -2,7 +2,7 @@
 {
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day8/p.in"))
+        using (StreamReader file = new StreamReader("day08/p.in"))
         {
             string ln;
             int w = 99;

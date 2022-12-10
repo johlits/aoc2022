@@ -32,7 +32,7 @@
 
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day9/p.in"))
+        using (StreamReader file = new StreamReader("day09/p.in"))
         {
             string ln;
             var head = new Knot(0, 0);

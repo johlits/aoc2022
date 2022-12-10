@@ -2,7 +2,7 @@
 {
     public static void Run()
     {
-        using (StreamReader file = new StreamReader("day6/p.in"))
+        using (StreamReader file = new StreamReader("day06/p.in"))
         {
             var queue = new Queue<char>();
             var hashset = new HashSet<char>();
