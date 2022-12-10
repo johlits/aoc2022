@@ -398,4 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Input files
-**/p.in
+p.in
