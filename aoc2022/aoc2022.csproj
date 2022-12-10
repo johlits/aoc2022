@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="day10\p.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="day9\p.in">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

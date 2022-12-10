@@ -43,3 +43,9 @@ C:\Users\johli232\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day6\p.in
 C:\Users\johli232\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day7\p.in
 C:\Users\johli232\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day8\p.in
 C:\Users\johli232\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day9\p.in
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day10\p.in
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day5\p.in
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day6\p.in
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day7\p.in
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day8\p.in
+C:\Users\johli\source\repos\aoc2022\aoc2022\bin\Debug\net6.0\day9\p.in

@@ -28,9 +28,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Collections.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard1.3/System.Collections.dll": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -40,9 +38,7 @@
           "Microsoft.NETCore.Targets": "1.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Runtime.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard1.5/System.Runtime.dll": {}
         }
       }
     }
@@ -245,23 +241,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\johli232\\.nuget\\packages\\": {},
+    "C:\\Users\\johli\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johli232\\source\\repos\\aoc2022\\aoc2022\\aoc2022.csproj",
+      "projectUniqueName": "C:\\Users\\johli\\source\\repos\\aoc2022\\aoc2022\\aoc2022.csproj",
       "projectName": "aoc2022",
-      "projectPath": "C:\\Users\\johli232\\source\\repos\\aoc2022\\aoc2022\\aoc2022.csproj",
-      "packagesPath": "C:\\Users\\johli232\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johli232\\source\\repos\\aoc2022\\aoc2022\\obj\\",
+      "projectPath": "C:\\Users\\johli\\source\\repos\\aoc2022\\aoc2022\\aoc2022.csproj",
+      "packagesPath": "C:\\Users\\johli\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\johli\\source\\repos\\aoc2022\\aoc2022\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\johli232\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\johli\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -271,7 +267,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Users\\johli232\\source\\NuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -301,8 +296,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -311,7 +305,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
