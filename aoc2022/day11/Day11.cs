@@ -32,7 +32,7 @@ public class Day11
             }
         }
 
-        public int IsDivisible(int id)
+        public int ThrowTo(int id)
         {
             var isDivisible = wheels[id] == 0;
             switch (id)
@@ -50,6 +50,7 @@ public class Day11
             
         }
     }
+
     private class Monkey
     {
         public int Id;
@@ -68,7 +69,7 @@ public class Day11
 
         public int Test (Item item)
         {
-            return item.IsDivisible(Id);
+            return item.ThrowTo(Id);
         }
     }
 
