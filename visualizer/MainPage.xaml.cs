@@ -31,7 +31,10 @@ public partial class MainPage : ContentPage
         try
         {
             var result = await FilePicker.Default.PickAsync(options);
-            FolderLabel.Text = result.FullPath;
+            if (result != null)
+            {
+                FolderLabel.Text = result.FullPath;
+            }
             return result;
         }
         catch (Exception ex)
