@@ -1,0 +1,43 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:drawable="clr-namespace:visualizer"
+             x:Class="visualizer.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+	<ContentPage.Resources>
+		<drawable:GraphicsDrawable x:Key="drawable" />
+	</ContentPage.Resources>
+    <ScrollView>
+        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,*"
+              Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
+
+            <Label 
+                Text=""
+                Grid.Row="0"
+                FontSize="18"
+                FontAttributes="Bold"
+                x:Name="FolderLabel"
+                HorizontalOptions="Center" />
+
+            <Button 
+                Text="Pick Folder"
+                FontAttributes="Bold"
+                Grid.Row="1"
+                SemanticProperties.Hint="Allows you to pick a folder on the filesystem"
+                Clicked="OnPickFolderClicked"
+                HorizontalOptions="Center" />
+
+			<Button
+                Text="Run p.out"
+                FontAttributes="Bold"
+                Grid.Row="2"
+                SemanticProperties.Hint="Finds and reads the p.out file"
+                Clicked="OnFindOut"
+                HorizontalOptions="Center" />
+
+			<GraphicsView Grid.Row="3" Drawable="{StaticResource drawable}" x:Name="DrawableView"
+                      HeightRequest="500"
+                      WidthRequest="700" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

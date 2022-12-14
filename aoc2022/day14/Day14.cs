@@ -4,9 +4,9 @@ public class Day14
 {
     public static void Run()
     {
-        var w = 5500;
+        var w = 500;
         var h = 200;
-        var offsetx = 2000;
+        var offsetx = -200;
         char[,] map = new char[w, h];
         var hiy = -1;
 
@@ -112,6 +112,20 @@ public class Day14
             }
         }
         Console.WriteLine(cnt);
+
+        // visualize
+        using (StreamWriter writer = new StreamWriter("day14/p.out"))
+        {
+            writer.WriteLine(w + "," + h);
+            for (var i = 0; i < h; i++)
+            {
+                for (var j = 0; j < w; j++)
+                {
+                    writer.Write(map[j, i]);
+                }
+                writer.WriteLine("");
+            }
+        }
     }
 }
 
