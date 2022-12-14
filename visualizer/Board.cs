@@ -40,7 +40,7 @@ namespace visualizer
 
         public Board(int columns, int rows)
         {
-            Cells = new char[rows, columns];
+            Cells = new char[columns, rows];
             Columns = columns;
             Rows = rows;
         }

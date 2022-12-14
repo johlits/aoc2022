@@ -23,10 +23,12 @@ namespace visualizer
 
         public GraphicsDrawable()
         {
-            this.board = new Board(3, 3);
-            this.board.Cells[0, 0] = '.';
-            this.board.Cells[1, 0] = 'o';
-            this.board.Cells[2, 0] = '#';
+            this.board = new Board(colors.Count, 1);
+            var i = 0;
+            foreach (KeyValuePair<char, Color> color in colors)
+            {
+                this.board.Cells[i++, 0] = color.Key;
+            }
         }
 
         public void UpdateBoard(Board board)

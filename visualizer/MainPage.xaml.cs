@@ -2,26 +2,44 @@
 
 public partial class MainPage : ContentPage
 {
-	private readonly IFolderPicker _folderPicker;
-
-	public MainPage(IFolderPicker folderPicker)
+	public MainPage()
 	{
 		InitializeComponent();
-		_folderPicker = folderPicker;
     }
 
-	private async void OnPickFolderClicked(object sender, EventArgs e)
-	{
-		var pickedFolder = await _folderPicker.PickFolder();
-		FolderLabel.Text = pickedFolder + "\\p.out";
-		SemanticScreenReader.Announce(FolderLabel.Text);
-	}
-
-    private async void OnFindOut(object sender, EventArgs e)
+    private async void Run(object sender, EventArgs e)
     {
-		var graphicsView = this.DrawableView;
-		((GraphicsDrawable)graphicsView.Drawable).UpdateBoard(new Board(FolderLabel.Text));
-        graphicsView.Invalidate();
+        if (!FolderLabel.Text.StartsWith("Please select"))
+        {
+            var graphicsView = this.DrawableView;
+            ((GraphicsDrawable)graphicsView.Drawable).UpdateBoard(new Board(FolderLabel.Text));
+            graphicsView.Invalidate();
+        }
+    }
+
+    private async void PickFile(object sender, EventArgs e)
+    {
+        PickOptions options = new()
+        {
+            PickerTitle = "Please select a file",
+        };
+        await PickAndShow(options);
+    }
+
+    public async Task<FileResult> PickAndShow(PickOptions options)
+    {
+        try
+        {
+            var result = await FilePicker.Default.PickAsync(options);
+            FolderLabel.Text = result.FullPath;
+            return result;
+        }
+        catch (Exception ex)
+        {
+            // The user canceled or something went wrong
+        }
+
+        return null;
     }
 }
 
