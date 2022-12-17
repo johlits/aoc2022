@@ -20,6 +20,8 @@
     {
         var hi = -1;
         var dic = new Dictionary<string, Valve>();
+
+        // delete opened valves for 2nd elephant
         using (StreamReader file = new StreamReader("day16/p.in"))
         {
             string ln;
@@ -55,7 +57,7 @@
             var mem = new Dictionary<Tuple<Valve, string, int>, int>();
             var mem2 = new Dictionary<Tuple<Valve, string, int>, int>();
 
-            q.Enqueue(new Tuple<Valve, HashSet<string>, int, int, bool>(dic["AA"], new HashSet<string>(), 30, 0, false));
+            q.Enqueue(new Tuple<Valve, HashSet<string>, int, int, bool>(dic["AA"], new HashSet<string>(), 26, 0, false));
             var index = 0;
             while (q.Count != 0)
             {
@@ -91,6 +93,10 @@
                 if (current.Item4 > hi)
                 {
                     hi = current.Item4;
+                    foreach (var s in current.Item2)
+                    {
+                        Console.Write(s + ", ");
+                    }
                     Console.WriteLine("new record: " + hi);
                 }
 
