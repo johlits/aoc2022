@@ -2,21 +2,22 @@
 {
     public static void Run()
     {
-        //var w = 8;
-        //var h = 6;
-        //var rot = 6 * 4;
-        var w = 122;
-        var h = 27;
-        var rot = 120 * 25;
+        var w = 8;
+        var h = 6;
+        var rot = 6 * 4;
+        //var w = 122;
+        //var h = 27;
+        //var rot = 120 * 25;
 
-        // 242 too low
+        // 652, 654 too low
         Console.WriteLine("begin");
+        var progress = 1;
 
         using (StreamReader file = new StreamReader("day24/p.in"))
         {
             string ln;
             var blizzards = new Dictionary<Tuple<int, int>, string>();
-            var players = new List<Tuple<int, int, char, int, string>>();
+            var players = new List<Tuple<int, int, char, int, int>>();
             var r = 0;
 
             while ((ln = file.ReadLine()) != null)
@@ -30,8 +31,8 @@
                         case '^': blizzards.Add(new Tuple<int, int>(c, r), "U"); break;
                         case 'v': blizzards.Add(new Tuple<int, int>(c, r), "D"); break;
                         case 'E': 
-                            players.Add(new Tuple<int, int, char, int, string>(c, r, '.', 0, "."));
-                            players.Add(new Tuple<int, int, char, int, string>(c, r, 'D', 0, "D"));
+                            players.Add(new Tuple<int, int, char, int, int>(c, r, '.', 0, 1));
+                            players.Add(new Tuple<int, int, char, int, int>(c, r, 'D', 0, 1));
                             break;
                     }
                 }
@@ -39,24 +40,23 @@
             }
             file.Close();
 
-            var q = new Queue<Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>>();
-            q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>(
+            var q = new Queue<Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>>();
+            q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>(
                 new Dictionary<Tuple<int, int>, string>(blizzards), players[0]));
-            q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>(
+            q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>(
                 new Dictionary<Tuple<int, int>, string>(blizzards), players[1]));
 
-            var visited = new HashSet<Tuple<int, int, int, int>>();
+            var visited = new HashSet<Tuple<int, int, int, int, int>>();
             var skips = 0;
 
             while (q.Count > 0)
             {
                 var data = q.Dequeue();
-                var blizzes = data.Item1;
                 var player = data.Item2;
 
                 //Console.WriteLine(player.Item1 + " " + player.Item2 + " " + player.Item3);
 
-                var mem = new Tuple<int, int, int, int>(player.Item1, player.Item2, player.Item3, (player.Item4 % rot));
+                var mem = new Tuple<int, int, int, int, int>(player.Item1, player.Item2, player.Item3, (player.Item4 % rot), player.Item5);
                 if (visited.Contains(mem))
                 {
                     skips++;
@@ -65,7 +65,7 @@
                 visited.Add(mem);
 
                 var newBlizzes = new Dictionary<Tuple<int, int>, string>();
-                foreach (KeyValuePair<Tuple<int, int>, string> entry in blizzes)
+                foreach (KeyValuePair<Tuple<int, int>, string> entry in data.Item1)
                 {
                     Tuple<int, int> pos = entry.Key;
                     
@@ -105,6 +105,7 @@
                 var py = player.Item2;
                 var pd = player.Item3;
                 var pr = player.Item4;
+                var pstep = player.Item5;
 
                 switch (pd)
                 {
@@ -119,30 +120,52 @@
                 if (!newBlizzes.ContainsKey(new Tuple<int, int>(px, py)))
                 {
 
-                    if (px == w - 2 && py == h - 1)
+                    if (px == w - 2 && py == h - 1 && pstep == 1)
+                    {
+                        pstep = 2;
+                        if (progress == 1)
+                        {
+                            progress = 2;
+                            Console.WriteLine("Part 1");
+                            q.Clear();
+                            visited.Clear();
+                        }
+                    }
+                    else if (px == 1 && py == 0 && pstep == 2)
+                    {
+                        pstep = 3;
+                        if (progress == 2)
+                        {
+                            progress = 3;
+                            Console.WriteLine("Part 2");
+                            q.Clear();
+                            visited.Clear();
+                        }
+                    }
+                    else if (px == w - 2 && py == h - 1 && pstep == 3)
                     {
                         Console.WriteLine("found");
                         Console.WriteLine("steps: " + pr);
-                        Console.WriteLine("path: " + player.Item5);
+                        Console.WriteLine("part: " + pstep);
                         Console.WriteLine("skips: " + skips);
                         break;
                     }
 
-                    if (px < w - 2 && py > 0)
-                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>
-                        (newBlizzes, new Tuple<int, int, char, int, string>(px, py, 'R', pr, player.Item5 + "R")));
+                    if (px < w - 2 && py > 0 && py < h - 1)
+                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>
+                        (newBlizzes, new Tuple<int, int, char, int, int>(px, py, 'R', pr, pstep)));
                     if (py < h - 2 || (px == 1 && py == 0) || (px == w - 2 && py == h - 2))
-                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>
-                        (newBlizzes, new Tuple<int, int, char, int, string>(px, py, 'D', pr, player.Item5 + "D")));
-                    if (py > 1 || (px == 1 && py == 1))
-                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>
-                        (newBlizzes, new Tuple<int, int, char, int, string>(px, py, 'U', pr, player.Item5 + "U")));
-                    if (px > 1 && py > 0)
-                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>
-                        (newBlizzes, new Tuple<int, int, char, int, string>(px, py, 'L', pr, player.Item5 + "L")));
+                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>
+                        (newBlizzes, new Tuple<int, int, char, int, int>(px, py, 'D', pr, pstep)));
+                    if (py > 1 || (px == 1 && py == 1) || (px == w - 2 && py == h - 1))
+                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>
+                        (newBlizzes, new Tuple<int, int, char, int, int>(px, py, 'U', pr, pstep)));
+                    if (px > 1 && py > 0 && py < h - 1)
+                        q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>
+                        (newBlizzes, new Tuple<int, int, char, int, int>(px, py, 'L', pr, pstep)));
                     
-                    q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, string>>
-                        (newBlizzes, new Tuple<int, int, char, int, string>(px, py, ' ', pr, player.Item5 + ".")));
+                    q.Enqueue(new Tuple<Dictionary<Tuple<int, int>, string>, Tuple<int, int, char, int, int>>
+                        (newBlizzes, new Tuple<int, int, char, int, int>(px, py, ' ', pr, pstep)));
                 }
 
             }
