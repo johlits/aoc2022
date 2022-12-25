@@ -50,9 +50,8 @@
                 case 4: snafu += "-"; break;
             }
 
-            tot = tot - ((tot + 2) % 5);
-            tot += 2;
-            tot = tot / 5;
+            tot -= (tot + 2) % 5;
+            tot = (tot + 2) / 5;
         }
 
         Console.WriteLine(String.Concat(snafu.Reverse()));
